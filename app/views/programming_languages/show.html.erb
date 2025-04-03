@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @programming_language %>
+
+<div class="page-header">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1><%= @programming_language.title %></h1>
+    <div>
+      <%= link_to "Edit", edit_programming_language_path(@programming_language), class: "btn btn-outline-primary me-2" %>
+      <%= link_to "Back", programming_languages_path, class: "btn btn-outline-secondary" %>
+    </div>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h5 class="card-title">Description</h5>
+    <p class="card-text"><%= @programming_language.description %></p>
+    
+    <h5 class="card-title mt-4">Official Link</h5>
+    <%= link_to @programming_language.link, @programming_language.link, target: "_blank", class: "card-link" %>
+  </div>
+  <div class="card-footer bg-white">
+    <%= button_to "Delete This Language", @programming_language, method: :delete, 
+            class: "btn btn-danger", 
+            form: { data: { turbo_confirm: 'Are you sure you want to delete this language?' } } %>
+  </div>
+</div>
